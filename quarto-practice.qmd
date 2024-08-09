@@ -1,0 +1,59 @@
+---
+title: "Day 5: Morning Session"
+author: "Takeen Shamloo"
+format: html
+editor_options: 
+  chunk_output_type: console
+execute: 
+  warning: false
+---
+
+```{r}
+#| message: false
+# load libraries ----
+library(tidyverse)
+```
+
+```{r}
+#| include: false
+head(starwars) # First 6 of the data set.
+tail(starwars) # Last 6 of the data set.
+dim(starwars) # 87 obv at 14 column variables. 
+```
+
+# Lets plot starwars ----
+
+```{r}
+#| echo: false
+ggplot(starwars, aes(x = height, y = mass)) +
+  aes(color = mass) +
+  labs(x = "Height (cm)", y = "Mass (kg)", title = "Guess where Jabba is:") +
+  geom_point()
+```
+
+- Create histogram of character heights
+- Update fill to purple and outside border line of each bin to orange
+- Update code options so only code and graph appears in output doc.
+- Update axis labels
+
+```{r}
+#| fig-cap: "This is my figure caption"
+#| alt-alt: "This is some alt text"
+#| echo: false
+ggplot(starwars, aes(x = height)) +
+  labs(x = "Height (cm)", y = "Count") +
+  geom_histogram(color = "orange", fill = "purple")
+```
+
+# Checking out some summary statistics ----
+
+```{r}
+swHeightMean <- round(mean(starwars$height, na.rm = TRUE),
+                      digits = 2)
+```
+
+The mean height of all starwars characters is `r swHeightMean`
+
+
+
+
